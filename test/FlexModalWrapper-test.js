@@ -8,7 +8,15 @@ import Portal from 'react-portal';
 import TestUtils from 'react-addons-test-utils';
 import assert from 'assert';
 import { mount } from 'enzyme';
+import {execSync} from 'child_process';
 
+describe('package', function () {
+    this.timeout(10000);
+    it('should work without a global dom', function () {
+        execSync('npm run build');
+        execSync('node dist');
+    });
+});
 
 describe('FlexModalWrapper', () => {
   let React;
