@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader!autoprefixer-loader"
+        loader: "isomorphic-style-loader!css-loader!autoprefixer-loader"
       }
     ]
   }

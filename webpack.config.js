@@ -43,7 +43,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: "style-loader!css-loader?localIdentName=[name]__[local]___[hash:base64:5]!autoprefixer-loader"
+                loader: "isomorphic-style-loader!css-loader?localIdentName=[name]__[local]___[hash:base64:5]!autoprefixer-loader"
             }
         ]
     },
