@@ -1,4 +1,5 @@
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 require('es6-promise').polyfill();
 module.exports = {
   entry: path.resolve(process.cwd(), 'index.js'),
@@ -25,8 +26,9 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "isomorphic-style-loader!css-loader!autoprefixer-loader"
+        loader: ExtractTextPlugin.extract('css?localIdentName=[name]__[local]___[hash:base64:5]!autoprefixer-loader')
       }
     ]
-  }
+  },
+  plugins: [new ExtractTextPlugin('[name].css')]
 };

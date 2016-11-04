@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var EXAMPLES_DIR = path.resolve(process.cwd(), 'examples');
 require('es6-promise').polyfill();
 
@@ -43,12 +44,13 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: "isomorphic-style-loader!css-loader?localIdentName=[name]__[local]___[hash:base64:5]!autoprefixer-loader"
+                loader: ExtractTextPlugin.extract('css?localIdentName=[name]__[local]___[hash:base64:5]!autoprefixer-loader')
             }
         ]
     },
     devtool: 'source-map',
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin('shared.js')
+        new webpack.optimize.CommonsChunkPlugin('shared.js'),
+        new ExtractTextPlugin('[name].css')
     ]
 };
