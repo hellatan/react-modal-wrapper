@@ -6,7 +6,7 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: 'dist/',
-    libraryTarget: 'umd',
+    libraryTarget: 'commonjs2',
     library: 'react-modal-wrapper'
   },
   externals: {
