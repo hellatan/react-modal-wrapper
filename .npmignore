@@ -1,6 +1,7 @@
-**/.*
-tests
+.idea
+lib
+test
 examples
-CONTRIBUTING.md
-tmp
 webpack.**.js
+# weird, but seems to be only used for dev purposes
+index.js

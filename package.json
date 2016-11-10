@@ -4,7 +4,7 @@
   "description": "A React Modal Wrapper that uses FlexBox to keep it's position, BYOM (bring-your-own-modal)",
   "main": "dist/index.js",
   "scripts": {
-    "build": "webpack --devtool source-map --config ./webpack.build.js",
+    "build": "rm -rf ./dist && webpack --devtool source-map --config ./webpack.build.js",
     "test": "mocha --compilers js:babel-register",
     "start": "webpack-dev-server --inline --config ./webpack.config.js --content-base examples/ \"$@\"",
     "prepublish": "npm test && npm run build"
@@ -15,12 +15,10 @@
     "type": "git",
     "url": "https://github.com/1stdibs/react-modal-wrapper"
   },
-  "dependencies": {
-    "react-portal": "~2.1.0"
-  },
   "peerDependencies": {
-    "react": "~0.14.3 || ^15.1.0",
-    "react-dom": "~0.14.3 || ^15.1.0"
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-portal": "~2.1.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "~3.2.0",
@@ -41,6 +39,7 @@
     "react-addons-css-transition-group": "~0.14.3 || ^15.1.0",
     "react-addons-test-utils": "~0.14.3 || ^15.1.0",
     "react-dom": "^15.3.2",
+    "react-portal": "~2.1.0",
     "style-loader": "^0.13.1",
     "webpack": "~1.12.8",
     "webpack-dev-server": "~1.14.0"
