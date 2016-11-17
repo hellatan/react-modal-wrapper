@@ -4,7 +4,7 @@ require.extensions['.css'] = require.extensions['.scss'] = () => ({});
 const FlexModalWrapper = require('../lib/FlexModalWrapper');
 const jsdom = require('jsdom');
 
-import Portal from '@1stdibs/react-portal';
+import Portal from 'react-body-subtree';
 import TestUtils from 'react-addons-test-utils';
 import assert from 'assert';
 import { mount } from 'enzyme';
