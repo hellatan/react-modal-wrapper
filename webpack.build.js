@@ -12,7 +12,7 @@ module.exports = {
   externals: {
     'react': 'react',
     'react-dom': 'react-dom',
-    'react-portal': 'react-portal'
+    '@1stdibs/react-portal': '@1stdibs/react-portal'
   },
   module: {
     loaders: [
