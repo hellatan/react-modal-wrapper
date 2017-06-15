@@ -24,3 +24,8 @@
 :local(.overlayStyle) {
     background: rgba(0,0,0,0.2);
 }
+
+:local(.noScroll) {
+     overflow: hidden;
+     position: fixed;
+ }
