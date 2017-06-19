@@ -1,11 +1,9 @@
-require.extensions['.css'] = require.extensions['.scss'] = () => ({});
-
-// required to get the require.extensions hack to work
+const mockCssModules = require("mock-css-modules");
+mockCssModules.register(['.css', '.scss']);
 const FlexModalWrapper = require('../lib/FlexModalWrapper');
 const jsdom = require('jsdom');
 
 import Portal from 'react-body-subtree';
-import TestUtils from 'react-addons-test-utils';
 import assert from 'assert';
 import { mount } from 'enzyme';
 import {execSync} from 'child_process';
@@ -117,14 +115,35 @@ describe('FlexModalWrapper', () => {
   });
 
   describe('preventScrolling', () => {
+
     it('should default preventScrolling to true', () => {
       const wrapper = mount(<FlexModalWrapper><p>Hi</p></FlexModalWrapper>);
       assert(wrapper.props().preventScrolling);
     });
 
-    it('should set document.body.style.overflow to hidden', () => {
+    it('should preventScrolling to false', () => {
+        const props = {
+          preventScrolling: false
+        }
+        const wrapper = mount(<FlexModalWrapper {...props}><p>Hi</p></FlexModalWrapper>);
+        assert.equal(wrapper.props().preventScrolling, false);
+    });
+
+    it('should render component if isOpened and add noScroll class to `body`', () => {
       const wrapper = mount(<FlexModalWrapper isOpened><p>Hi</p></FlexModalWrapper>);
-      assert.equal(document.body.style.overflow, 'hidden');
+      assert.equal(document.body.className, 'noScroll');
+      assert.equal(wrapper.node.props.children.props.children, 'Hi');
+      assert.equal(document.body.childElementCount, 1);
+      assert.equal(wrapper.component.props.props.isOpened, true);
+    });
+
+    it('should close on outside click and remove noScroll class from `body`', () => {
+        mount(<FlexModalWrapper isOpened closeOnOutsideClick><p>Hi</p></FlexModalWrapper>);
+        assert.equal(document.body.childElementCount, 1);
+        const mouseEvent = new window.MouseEvent('mousedown', { view: window });
+        document.dispatchEvent(mouseEvent);
+        assert.equal(document.body.className, '');
+        assert.equal(document.body.childElementCount, 0);
     });
   });
 });
