@@ -27,5 +27,5 @@
 
 :local(.noScroll) {
      overflow: hidden;
-     position: fixed;
+     position: fixed !important;
  }
