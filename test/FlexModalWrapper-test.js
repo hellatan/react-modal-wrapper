@@ -28,10 +28,6 @@ describe('FlexModalWrapper', () => {
     React = require('react');
   });
 
-  it('propTypes.children should be required', () => {
-    assert.equal(FlexModalWrapper.propTypes.children, React.PropTypes.node.isRequired);
-  });
-
   it('should append modal wrapper to document.body via isOpened prop', () => {
     const wrapper = mount(<FlexModalWrapper isOpened><p className="someclass">Hi</p></FlexModalWrapper>);
     assert.equal(document.body.childElementCount, 1);
